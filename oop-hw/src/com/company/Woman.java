@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Scanner;
+
 public class Woman extends Human{
     public Woman() {
         super(false);
@@ -20,17 +22,36 @@ public class Woman extends Human{
             return randomNumber < 0.7;
         }
     }
+    protected Human giveBirth(Human father) {
+        Human child = null;
 
-//    @Override
-//    boolean spendTimeTogether() {
-//        return false;
-//    }
+        double randomNumber = Math.random();
 
-//    @Override
-//    void haveRelations(Human anotherPerson) {
-//        this.sustainSociety(anotherPerson);
-//    }
-    boolean giveBirth(){
-        return true;
+        if (randomNumber > 0.5){
+            child = new Man();
+        }else{
+            child = new Woman();
+        }
+
+        System.out.println("Please enter Name for person");
+        Scanner scanner = new Scanner(System.in);
+        child.setName(scanner.nextLine());
+        child.setLastName(father.getLastName());
+        if(child.getGender()){
+            float boyHeight = father.getHeight() + (0.1f * this.getHeight());
+            child.setHeight(boyHeight);
+        }else {
+            float girlHeight = this.getHeight() + (0.1f * father.getHeight());
+            child.setHeight(girlHeight);
+        }
+        if(child.getGender()){
+            float boyWeight = father.getWeight() + (0.1f * this.getWeight());
+            child.setWeight(boyWeight);
+        }else {
+            float girlWeight = this.getWeight() + (0.1f * father.getWeight());
+            child.setWeight(girlWeight);
+        }
+        return child;
     }
 }
+

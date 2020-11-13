@@ -7,10 +7,21 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Please enter information for person1");
         Human person1 = createPerson();
+        System.out.println("Please enter information for person2");
         Human person2 = createPerson();
         System.out.println("person1 = " + person1);
         System.out.println("person2 = " + person2);
-        comparePersonCompatibilityTest(person1, person2);
+        System.out.println("person1 can speak with person2 : " + person1.speak(person2));
+        System.out.println("person1 sustain susiety with person2 : " + person1.sustainSociety(person2));
+        System.out.println("person1 can spend time with person2 : " + person1.spendTimeTogether(person2));
+        Human resultOfRelations = person1.haveRelations(person2);
+        if(resultOfRelations != null){
+            System.out.println("Result of relations : " + resultOfRelations);
+        }else {
+            System.out.println("They didn't like each other :)");
+        }
+
+
     }
     private static Human createPerson(){
         System.out.println("Do you wanna chose a Man(enter True) or a Woman(enter False?)");
@@ -34,7 +45,4 @@ public class Main {
         return person;
     }
 
-    private static void comparePersonCompatibilityTest(Human person1, Human person2){
-        person1.haveRelations(person2);
-    }
 }
